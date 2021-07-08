@@ -22,7 +22,6 @@ function Favorite(props) {
         moviePost:moviePost,
         movieRunTime:movieRunTime
     }
-    console.log(variable)
 
     useEffect(() => {
         axios.post('/api/favorite/favoriteNumber',variable)

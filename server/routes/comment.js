@@ -8,11 +8,8 @@ const { auth } = require("../middleware/auth");
 //=================================
 
 router.post("/saveComment", auth, (req, res) => {
-    console.log(req.body)
     const comment = new Comment(req.body)
-
     comment.save((err, comment) => {
-        console.log(comment)
         if (err) return res.json({ success: false, err })
 
         Comment.find({ '_id': comment._id })

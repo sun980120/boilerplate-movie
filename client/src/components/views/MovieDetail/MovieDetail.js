@@ -29,9 +29,7 @@ function MovieDetailPage(props) {
 
         axios.post('/api/comment/getComments', movieVariable)
             .then(response => {
-                console.log(response)
                 if (response.data.success) {
-                    console.log('response.data.comments', response.data.comments)
                     setCommentLists(response.data.comments)
                 } else {
                     alert('Failed to get comments Info')
@@ -49,7 +47,6 @@ function MovieDetailPage(props) {
         fetch(endpoint)
             .then(result => result.json())
             .then(result => {
-                console.log(result)
                 setMovie(result)
                 setLoadingForMovie(false)
 
@@ -57,7 +54,6 @@ function MovieDetailPage(props) {
                 fetch(endpointForCasts)
                     .then(result => result.json())
                     .then(result => {
-                        console.log(result)
                         setCasts(result.cast)
                     })
 
@@ -66,7 +62,6 @@ function MovieDetailPage(props) {
             .catch(error => console.error('Error:', error)
             )
     }
-
     const updateComment = (newComment) => {
         setCommentLists(CommentLists.concat(newComment))
     }
@@ -95,6 +90,7 @@ function MovieDetailPage(props) {
 
                 {/* Movie Info */}
                 {!LoadingForMovie ?
+                
                     <MovieInfo movie={Movie} />
                     :
                     <div>loading...</div>
